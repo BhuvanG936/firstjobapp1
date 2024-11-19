@@ -1,5 +1,6 @@
-package com.srsvmj.firstjobapp.job;
+package com.srsvmj.firstjobapp.review;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.srsvmj.firstjobapp.company.Company;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="jobs")
-public class Job {
+@Table(name="reviews")
+public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +22,9 @@ public class Job {
 
     private String title;
     private String description;
-    private String minSalary;
-    private String maxSalary;
-    private String location;
+    private double rating;
 
-    //Many Jobs are linked to one Company
+    @JsonIgnore
     @ManyToOne
     private Company company;
 }
